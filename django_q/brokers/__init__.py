@@ -184,6 +184,10 @@ def get_broker(list_key=Conf.PREFIX):
     elif Conf.MONGO:
         from django_q.brokers import mongo
         return mongo.Mongo(list_key=list_key)
+    # Rabbit-MQ
+    elif Conf.RABBITMQ:
+        from django_q.brokers import rabbit_mq
+        return rabbit_mq.RabbitMQ(list_key=list_key)
     # default to redis
     else:
         from django_q.brokers import redis_broker
